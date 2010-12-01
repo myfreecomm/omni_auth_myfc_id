@@ -15,3 +15,10 @@ begin
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install jeweler"
 end
+
+gem "rspec", "> 2.0"
+require 'rspec/core/rake_task'
+
+RSpec::Core::RakeTask.new(:spec)
+
+task :default => :spec
