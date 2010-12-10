@@ -4,13 +4,13 @@ require 'multi_json'
 module OmniAuth
   module Strategies
     #
-    # Authenticate to MyfcId via OAuth and retrieve an access token for API usage
+    # Authenticate to Myfcid via OAuth and retrieve an access token for API usage
     #
     # Usage:
     #
-    #    use OmniAuth::Strategies::MyfcId, 'consumerkey', 'consumersecret', {:site=> 'http://stage.id.myfreecomm.com.br', :scope => 'application-slug'}
+    #    use OmniAuth::Strategies::Myfcid, 'consumerkey', 'consumersecret', {:site=> 'http://stage.id.myfreecomm.com.br', :scope => 'application-slug'}
     #
-    class MyfcId < OmniAuth::Strategies::OAuth      
+    class Myfcid < OmniAuth::Strategies::OAuth      
       def initialize(app, consumer_key, consumer_secret, options = {})
         @scope = options.delete(:scope)
         @site = options.delete(:site) || 'https://id.myfreecomm.com.br'

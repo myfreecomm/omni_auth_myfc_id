@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{omni_auth_myfc_id}
-  s.version = "1.0.0.pre"
+  s.version = "1.0.1.pre"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marcos Tapaj\303\263s"]
-  s.date = %q{2010-12-01}
+  s.date = %q{2010-12-10}
   s.description = %q{description}
   s.email = ["marcos@tapajos.me"]
   s.files = [
@@ -17,7 +17,6 @@ Gem::Specification.new do |s|
     "VERSION.yml",
     "lib/omni_auth_myfc_id.rb",
     "lib/omni_auth_myfc_id/consumer.rb",
-    "lib/omni_auth_myfc_id/myfc_id.rb",
     "omni_auth_myfc_id.gemspec",
     "spec/omni_auth_myfc_id/myfc_id_spec.rb",
     "spec/spec.opts",
