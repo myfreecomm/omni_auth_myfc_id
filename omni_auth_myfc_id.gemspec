@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
     "VERSION.yml",
     "lib/omni_auth_myfc_id.rb",
     "lib/omni_auth_myfc_id/consumer.rb",
+    "lib/omni_auth_myfc_id/myfcid.rb",
     "omni_auth_myfc_id.gemspec",
     "spec/omni_auth_myfc_id/myfc_id_spec.rb",
     "spec/spec.opts",
