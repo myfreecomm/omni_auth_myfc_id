@@ -8,11 +8,10 @@ module OmniAuth
     #
     # Usage:
     #
-    #    use OmniAuth::Strategies::Myfcid, 'consumerkey', 'consumersecret', {:site=> 'http://stage.id.myfreecomm.com.br', :scope => 'application-slug'}
+    #    use OmniAuth::Strategies::Myfcid, 'consumerkey', 'consumersecret', {:site=> 'http://stage.id.myfreecomm.com.br'}
     #
     class Myfcid < OmniAuth::Strategies::OAuth      
       def initialize(app, consumer_key, consumer_secret, options = {})
-        @scope = options.delete(:scope)
         @site = options.delete(:site) || 'https://id.myfreecomm.com.br'
         super(app, :myfcid, consumer_key, consumer_secret,
                 options.merge({:site => @site ,
@@ -21,7 +20,6 @@ module OmniAuth
                 :access_token_path  => "/sso/token",
                 :signature_method => "PLAINTEXT"
               }))
-        @consumer.options.merge!({:form_data => {'scope' => @scope}})
       end
       
       def auth_hash
@@ -37,7 +35,7 @@ module OmniAuth
       protected
 
         def user_data
-          result = @access_token.post('/sso/fetchuserdata', nil, {'scope' => @scope})
+          result = @access_token.post('/sso/fetchuserdata', nil)
           @data ||= MultiJson.decode(result.body)
         end
       
