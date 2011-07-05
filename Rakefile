@@ -9,7 +9,7 @@ begin
     gemspec.homepage = "http://myfreecomm.com.br"
     gemspec.description = "description"
     gemspec.authors = ["Marcos Tapajós"]
-    gemspec.add_dependency('oa-oauth', '0.2.1')
+    gemspec.add_dependency('oa-oauth', '0.2.6')
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
