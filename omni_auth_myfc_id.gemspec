@@ -5,13 +5,13 @@
 
 Gem::Specification.new do |s|
   s.name = %q{omni_auth_myfc_id}
-  s.version = "1.0.8.pre"
+  s.version = "1.0.9.pre"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Marcos Tapajós"]
+  s.authors = [%q{Marcos Tapajós}]
   s.date = %q{2011-08-18}
   s.description = %q{description}
-  s.email = ["marcos@tapajos.me"]
+  s.email = [%q{marcos@tapajos.me}]
   s.files = [
     "Rakefile",
     "VERSION.yml",
@@ -23,8 +23,8 @@ Gem::Specification.new do |s|
     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://myfreecomm.com.br}
-  s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.8}
   s.summary = %q{summary}
 
   if s.respond_to? :specification_version then
