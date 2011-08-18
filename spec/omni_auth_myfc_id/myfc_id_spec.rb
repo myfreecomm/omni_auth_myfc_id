@@ -25,7 +25,7 @@ describe OmniAuth::Strategies::Myfcid do
     it "should return auth_hash using server" do
       @access_token_mock.should_receive(:token).and_return("token")
       @access_token_mock.should_receive(:secret).and_return("secret")
-      @access_token_mock.should_receive(:post).with("/sso/fetchuserdata", nil).at_least(:once).and_return(mock(:body => "{\"nickname\":\"nick\",\"last_name\":\"Tapajos\",\"email\":\"mail\",\"first_name\":\"Marcos\"}"))
+      @access_token_mock.should_receive(:post).with("/sso/fetchuserdata", nil).once.and_return(mock(:body => "{\"nickname\":\"nick\",\"last_name\":\"Tapajos\",\"email\":\"mail\",\"first_name\":\"Marcos\"}"))
       @myfc_id.auth_hash.should == {
         "user_info"=>{"name"=>"Marcos Tapajos", "nickname"=>"nick", "last_name"=>"Tapajos", "first_name"=>"Marcos", "email"=>"mail"}, 
         "uid"=>nil, 

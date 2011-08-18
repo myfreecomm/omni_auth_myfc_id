@@ -35,8 +35,8 @@ module OmniAuth
       protected
 
         def user_data
-          result = @access_token.post('/sso/fetchuserdata', nil)
-          @data ||= MultiJson.decode(result.body)
+          @result ||= @access_token.post('/sso/fetchuserdata', nil)
+          @data ||= MultiJson.decode(@result.body)
         end
       
         def user_info
