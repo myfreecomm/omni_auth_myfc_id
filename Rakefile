@@ -8,7 +8,7 @@ begin
     gemspec.email = ["marcos@tapajos.me"]
     gemspec.homepage = "http://myfreecomm.com.br"
     gemspec.description = "description"
-    gemspec.authors = ["Marcos Tapajós"]
+    gemspec.authors = ["Marcos Tapajos"]
     gemspec.add_dependency('oa-oauth', '~> 0.2.6')
   end
   Jeweler::GemcutterTasks.new
