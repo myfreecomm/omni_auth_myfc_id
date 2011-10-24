@@ -10,10 +10,10 @@ module OmniAuth
     #
     #    use OmniAuth::Strategies::Myfcid, 'consumerkey', 'consumersecret', {:site=> 'http://stage.id.myfreecomm.com.br'}
     #
-    class Myfcid < OmniAuth::Strategies::OAuth      
+    class PassaporteWeb < OmniAuth::Strategies::OAuth      
       def initialize(app, consumer_key, consumer_secret, options = {})
-        @site = options.delete(:site) || 'https://id.myfreecomm.com.br'
-        super(app, :myfcid, consumer_key, consumer_secret,
+        @site = options.delete(:site) || 'https://sandbox.app.passaporteweb.com.br'
+        super(app, :passaporte_web, consumer_key, consumer_secret,
                 options.merge({:site => @site ,
                 :request_token_path => "/sso/initiate",
                 :authorize_path     => "/sso/authorize",

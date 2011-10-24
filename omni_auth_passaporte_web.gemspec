@@ -2,12 +2,12 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-  s.name = %q{omni_auth_myfc_id}
-  s.version = "1.0.15.pre"
+  s.name = %q{omni_auth_passaporte_web}
+  s.version = "1.0.0"
   s.authors = ["Marcos Tapajos"]
   s.email = ["marcos@tapajos.me"]
   s.homepage = %q{http://myfreecomm.com.br}
-  s.summary = %q{summary}
+  s.summary = %q{Autenticação via SSO usando o Passaporte Web}
   s.description = s.summary
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
