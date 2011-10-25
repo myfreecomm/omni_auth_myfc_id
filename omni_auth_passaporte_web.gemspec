@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name = %q{omni_auth_passaporte_web}
-  s.version = "1.0.0"
+  s.version = "1.0.1"
   s.authors = ["Marcos Tapajos"]
   s.email = ["marcos@tapajos.me"]
   s.homepage = %q{http://myfreecomm.com.br}
