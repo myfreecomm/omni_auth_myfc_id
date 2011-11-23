@@ -4,11 +4,11 @@ require 'multi_json'
 module OmniAuth
   module Strategies
     #
-    # Authenticate to Myfcid via OAuth and retrieve an access token for API usage
+    # Authenticate to PassaporteWeb via OAuth and retrieve an access token for API usage
     #
     # Usage:
     #
-    #    use OmniAuth::Strategies::Myfcid, 'consumerkey', 'consumersecret', {:site=> 'http://stage.id.myfreecomm.com.br'}
+    #    use OmniAuth::Strategies::PassaporteWeb, 'consumerkey', 'consumersecret', {:site=> 'http://sandbox.app.passaporteweb.com.br'}
     #
     class PassaporteWeb < OmniAuth::Strategies::OAuth      
       def initialize(app, consumer_key, consumer_secret, options = {})
