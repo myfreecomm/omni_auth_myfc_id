@@ -10,7 +10,7 @@ module OmniAuth
     #
     #    use OmniAuth::Strategies::PassaporteWeb, 'consumerkey', 'consumersecret', {:site=> 'http://sandbox.app.passaporteweb.com.br'}
     #
-    class PassaporteWeb < OmniAuth::Strategies::OAuth      
+    class PassaporteWeb < OmniAuth::Strategies::OAuth
       def initialize(app, consumer_key, consumer_secret, options = {})
         @site = options.delete(:site) || 'https://sandbox.app.passaporteweb.com.br'
         super(app, :passaporte_web, consumer_key, consumer_secret,
@@ -21,7 +21,7 @@ module OmniAuth
                 :signature_method => "PLAINTEXT"
               }))
       end
-      
+
       def auth_hash
         OmniAuth::Utils.deep_merge(super, {
           'uid' => user_data['uuid'],
@@ -31,14 +31,14 @@ module OmniAuth
           }
         })
       end
-      
+
       protected
 
         def user_data
           @result ||= @access_token.post('/sso/fetchuserdata', nil)
           @data ||= MultiJson.decode(@result.body)
         end
-      
+
         def user_info
           {
             'nickname' => user_data['nickname'],

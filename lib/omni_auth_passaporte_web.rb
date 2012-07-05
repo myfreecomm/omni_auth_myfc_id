@@ -1,6 +1,6 @@
 $:.unshift(File.dirname(__FILE__))
 
-gem 'oa-oauth', '0.2.6'
+gem 'oa-oauth'
 
 require 'omniauth/oauth'
 require 'oauth/signature/plaintext'
