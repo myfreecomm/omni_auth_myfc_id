@@ -1,6 +1,4 @@
-require 'omniauth/oauth'
-require 'multi_json'
-
+# encoding: utf-8
 module OmniAuth
   module Strategies
     #
@@ -8,46 +6,52 @@ module OmniAuth
     #
     # Usage:
     #
-    #    use OmniAuth::Strategies::PassaporteWeb, 'consumerkey', 'consumersecret', {:site=> 'http://sandbox.app.passaporteweb.com.br'}
+    #    use OmniAuth::Strategies::PassaporteWeb, 'consumerkey', 'consumersecret', :client_options => {:site => 'http://sandbox.app.passaporteweb.com.br'}
     #
     class PassaporteWeb < OmniAuth::Strategies::OAuth
-      def initialize(app, consumer_key, consumer_secret, options = {})
-        @site = options.delete(:site) || 'https://sandbox.app.passaporteweb.com.br'
-        super(app, :passaporte_web, consumer_key, consumer_secret,
-                options.merge({:site => @site ,
-                :request_token_path => "/sso/initiate",
-                :authorize_path     => "/sso/authorize",
-                :access_token_path  => "/sso/token",
-                :signature_method => "PLAINTEXT"
-              }))
+
+      # Give your strategy a name.
+      option :name, "passaporte_web"
+
+      # This is where you pass the options you would pass when
+      # initializing your consumer from the OAuth gem.
+      option :client_options, {
+        :site => "http://sandbox.app.passaporteweb.com.br",
+        :request_token_path => "/sso/initiate",
+        :authorize_path => "/sso/authorize",
+        :access_token_path => "/sso/token",
+        :signature_method => "PLAINTEXT"
+      }
+
+      # These are called after authentication has succeeded. If
+      # possible, you should try to set the UID without making
+      # additional calls (if the user id is returned with the token
+      # or as a URI parameter). This may not be possible with all
+      # providers.
+      # uid{ request.params['uuid'] }
+      uid{ user_data['uuid'] }
+
+      info do
+        {
+          'uuid' => user_data['uuid'],
+          'nickname' => user_data['nickname'],
+          'email' => user_data['email'],
+          'first_name' => user_data['first_name'],
+          'last_name' => user_data['last_name'],
+          'name' => [user_data['first_name'], user_data['last_name']].join(' ').strip,
+        }
       end
 
-      def auth_hash
-        OmniAuth::Utils.deep_merge(super, {
-          'uid' => user_data['uuid'],
-          'user_info' => user_info,
-          'extra' => {
-            'user_hash' => user_data
-          }
-        })
+      extra do
+        {
+          'user_hash' => user_data
+        }
       end
 
-      protected
-
-        def user_data
-          @result ||= @access_token.post('/sso/fetchuserdata', nil)
-          @data ||= MultiJson.decode(@result.body)
-        end
-
-        def user_info
-          {
-            'nickname' => user_data['nickname'],
-            'email' => user_data['email'],
-            'first_name' => user_data['first_name'],
-            'last_name' => user_data['last_name'],
-            'name' => [user_data['first_name'], user_data['last_name']].join(' ').strip,
-          }
-        end
+      def user_data
+        @result ||= access_token.post('/sso/fetchuserdata', nil)
+        @user_data ||= MultiJson.decode(@result.body)
+      end
 
     end
   end
