@@ -18,7 +18,8 @@ describe OmniAuth::Strategies::PassaporteWeb do
       :oauth_version=>"1.0",
       :access_token_path=>"/sso/token",
       :scheme=>:header,
-      :site=>"http://sandbox.app.passaporteweb.com.br"
+      :site=>"http://sandbox.app.passaporteweb.com.br",
+      :include_expired_service_accounts => false
     }
   end
 

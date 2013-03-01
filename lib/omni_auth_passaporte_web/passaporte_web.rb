@@ -20,7 +20,8 @@ module OmniAuth
         :request_token_path => "/sso/initiate",
         :authorize_path => "/sso/authorize",
         :access_token_path => "/sso/token",
-        :signature_method => "PLAINTEXT"
+        :signature_method => "PLAINTEXT",
+        :include_expired_service_accounts => false
       }
 
       # These are called after authentication has succeeded. If
@@ -49,8 +50,12 @@ module OmniAuth
       end
 
       def user_data
-        @result ||= access_token.post('/sso/fetchuserdata', nil)
+        @result ||= access_token.post('/sso/fetchuserdata', fetch_user_data_post_body)
         @user_data ||= MultiJson.decode(@result.body)
+      end
+
+      def fetch_user_data_post_body
+        options['client_options']['include_expired_service_accounts'] ? {:include_expired => true} : nil
       end
 
     end
