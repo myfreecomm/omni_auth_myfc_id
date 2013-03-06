@@ -55,7 +55,7 @@ module OmniAuth
       end
 
       def fetch_user_data_post_body
-        options['client_options']['include_expired_service_accounts'] ? {:include_expired => true} : nil
+        options['client_options']['include_expired_service_accounts'] ? {:include_expired_accounts => true} : nil
       end
 
     end
